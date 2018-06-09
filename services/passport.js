@@ -10,6 +10,8 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
+  // const user = await User.findById(id);
+  // done(null, user);
   User.findById(id).then((user) => {
     done(null, user);
   });
@@ -23,6 +25,9 @@ passport.use(
     proxy: true
   },
   async (accessToken, refreshToken, profile, done) => {
+    console.log(accessToken);
+    console.log(profile);
+    
     const existingUser = await User.findOne({ googleId: profile.id });
     if(existingUser) {
       return done(null, existingUser);
