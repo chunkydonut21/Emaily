@@ -18,6 +18,7 @@ class App extends React.Component {
       <BrowserRouter>
         <div className="container">
           <Header />
+          gg
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={Dashboard} />
           <Route path="/surveys/new" component={SurveyNew} />
